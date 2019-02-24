@@ -2,11 +2,12 @@ from django.shortcuts import render
 from django.views import generic
 
 from .models import Question
+from .mixins import RequireLoginMixin
 
 # Create your views here.
 
 
-class IndexView(generic.ListView):
+class IndexView(RequireLoginMixin, generic.ListView):
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
 
